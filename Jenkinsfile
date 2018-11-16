@@ -1,63 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Code Compile') {
-      steps {
-        timestamps() {
-          sh 'env | sort'
-        }
-
-      }
-    }
-    stage('CODE QUALITY') {
-      parallel {
-        stage('Code Coverage') {
-          steps {
-            timestamps() {
-              sh '''
-			  '''
-            }
-
-          }
-        }
-        stage('Code Security') {
-          steps {
-            timestamps() {
-              sh '''
-			  '''
-            }
-
-          }
-        }
-      }
-    }
-    stage('Archive Artifacts') {
-      steps {
-        timestamps() {
-          sh '''
-		  '''
-          archiveArtifacts(artifacts: '*.zip', allowEmptyArchive: true)
-        }
-
-      }
-    }
-    stage('Docker Build') {
-      steps {
-        timestamps() {
-          sh '''
-		  '''
-        }
-
-      }
-    }
-    stage('JUnit Report') {
-      steps {
-        timestamps() {
-          junit(testResults: '**/test-results/*.xml', allowEmptyResults: true, healthScaleFactor: 1)
-        }
-
-      }
-    }
     stage('DEPLOY DEV') {
       steps {
         echo 'deploy'
