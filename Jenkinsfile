@@ -50,17 +50,7 @@ pipeline {
 
       }
     }
-    stage('PUBLISH REPORTS') {
-      parallel {
-        stage('Checkstyle Report') {
-          steps {
-            timestamps() {
-              checkstyle(pattern: '**/test-results/jshint-checkstyle.xml')
-            }
-
-          }
-        }
-        stage('JUnit Report') {
+           stage('JUnit Report') {
           steps {
             timestamps() {
               junit(testResults: '**/test-results/*.xml', allowEmptyResults: true, healthScaleFactor: 1)
