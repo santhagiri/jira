@@ -54,10 +54,8 @@ pipeline {
       parallel {
         stage('Checkstyle Report') {
           steps {
-            timestamps() {
-              checkstyle(pattern: '**/test-results/jshint-checkstyle.xml')
-            }
-
+            timestamps()
+            echo 'check style'
           }
         }
         stage('JUnit Report') {
@@ -89,7 +87,6 @@ pipeline {
       }
     }
   }
-
   environment {
     PROJECT = 'cx'
     APPLICATION = 'ess'
