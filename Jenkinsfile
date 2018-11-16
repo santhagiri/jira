@@ -51,7 +51,15 @@ pipeline {
       }
     }
     stage('PUBLISH REPORTS') {
-      
+      parallel {
+        stage('Checkstyle Report') {
+          steps {
+            timestamps() {
+              checkstyle(pattern: '**/test-results/jshint-checkstyle.xml')
+            }
+
+          }
+        }
         stage('JUnit Report') {
           steps {
             timestamps() {
@@ -61,7 +69,7 @@ pipeline {
           }
         }
       }
-
+    }
     stage('Deploy - DEV') {
       environment {
         DEPLOYMENT_ENVIRONMENT = 'dev'
