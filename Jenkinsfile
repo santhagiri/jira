@@ -89,10 +89,7 @@ pipeline {
       }
     }
   }
-  tools {
-    nodejs 'NodeJS 7.9.0'
-  }
-  environment {
+   environment {
     PROJECT = 'cx'
     APPLICATION = 'ess'
     SERVICE_TYPE = 'nodejs'
