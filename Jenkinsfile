@@ -89,7 +89,7 @@ pipeline {
       }
     }
   }
-   environment {
+  environment {
     PROJECT = 'cx'
     APPLICATION = 'ess'
     SERVICE_TYPE = 'nodejs'
