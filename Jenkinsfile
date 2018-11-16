@@ -58,22 +58,9 @@ pipeline {
 
       }
     }
-    stage('Deploy - DEV') {
-      environment {
-        DEPLOYMENT_ENVIRONMENT = 'dev'
-        DOCKER_PORT = '3003'
-        DOCKER_SERVER_1 = 'aw-lx0076'
-        DOCKER_SERVER_2 = 'aw-lx0336'
-      }
+    stage('DEPLOY DEV') {
       steps {
-        timestamps() {
-          deleteDir()
-          git(url: '${DOCKER_VARIABLES_DEV}', credentialsId: 'ca88899d-be3e-45db-a2a0-6fa79f678a56')
-          sh '''
-		'''
-          deleteDir()
-        }
-
+        echo 'deploy'
       }
     }
   }
