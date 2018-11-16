@@ -25,7 +25,7 @@ pipeline {
             timestamps() {
               sh '''
 			  '''
-    
+            }
 
           }
         }
@@ -50,7 +50,9 @@ pipeline {
 
       }
     }
-           stage('JUnit Report') {
+    stage('PUBLISH REPORTS') {
+      
+        stage('JUnit Report') {
           steps {
             timestamps() {
               junit(testResults: '**/test-results/*.xml', allowEmptyResults: true, healthScaleFactor: 1)
@@ -59,7 +61,7 @@ pipeline {
           }
         }
       }
-    }
+
     stage('Deploy - DEV') {
       environment {
         DEPLOYMENT_ENVIRONMENT = 'dev'
@@ -79,6 +81,7 @@ pipeline {
       }
     }
   }
+
   environment {
     PROJECT = 'cx'
     APPLICATION = 'ess'
